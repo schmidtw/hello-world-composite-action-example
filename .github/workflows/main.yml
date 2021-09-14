@@ -11,9 +11,13 @@ jobs:
     name: Release Job
     steps:
       - uses: actions/checkout@v2
-      - uses: schmidtw/hello-world-composite-action@v2.0.1
+      - uses: schmidtw/hello-world-composite-action@v2.0.2
         name: Generate Release
         id: generate_release
+        with:
+          artifact-dir: foobar
+          verbose: 1
+          meson-wrap: true
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1
@@ -22,5 +26,5 @@ jobs:
           draft: false
           prerelease: false
           bodyFile: ${{ steps.generate_release.outputs.release-body }}
-          artifacts: "artifacts/*"
-          token: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          artifacts: "${{ steps.generate_release.outputs.artifact-dir }}/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
