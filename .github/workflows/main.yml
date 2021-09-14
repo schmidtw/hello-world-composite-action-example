@@ -11,7 +11,7 @@ jobs:
     name: Release Job
     steps:
       - uses: actions/checkout@v2
-      - uses: schmidtw/hello-world-composite-action@v2.0.2
+      - uses: schmidtw/hello-world-composite-action@v2.0.4
         name: Generate Release
         id: generate_release
         with:

@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.3]
+### Added
+- Do some more stuff
+- Add a few basic utils for strings.
+- Add the auth_token_req() function and support code.
+
+
+## [0.0.1]
+### Added
 ## [0.0.2]
 ### Added
 - Do some stuff
