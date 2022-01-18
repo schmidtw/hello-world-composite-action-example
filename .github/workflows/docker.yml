@@ -5,6 +5,10 @@ on:
         description: "Who to greet?"
         required: true
         default: 'Mona the Octocat'
+      which:
+        description: "Which file to run"
+        required: true
+        default: Dockerfile
 
 jobs:
   hello_world_job:
@@ -16,6 +20,7 @@ jobs:
         uses: schmidtw/hello-world-docker-action@v1
         with:
           who-to-greet: ${{ github.event.inputs.name }}
+          which: ${{ github.event.inputs.which }}
 
       # Use the output from the `hello` step
       - name: Get the output time
