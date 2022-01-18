@@ -11,13 +11,27 @@ on:
         default: Dockerfile
 
 jobs:
-  hello_world_job:
+  hello_foo_job:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
       - name: Hello world action step
         id: hello
-        uses: schmidtw/hello-world-docker-action@v1
+        uses: schmidtw/hello-world-docker-action@foo
+        with:
+          who-to-greet: ${{ github.event.inputs.name }}
+          which: ${{ github.event.inputs.which }}
+
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+  hello_bar_bar:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: schmidtw/hello-world-docker-action@bar
         with:
           who-to-greet: ${{ github.event.inputs.name }}
           which: ${{ github.event.inputs.which }}
