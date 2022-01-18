@@ -1,6 +1,7 @@
 name: Relaase
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+*'
@@ -18,13 +19,3 @@ jobs:
           artifact-dir: foobar
           verbose: 1
           meson-wrap: true
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
-        with:
-          name: ${{ steps.generate_release.outputs.release-name }}
-          draft: false
-          prerelease: false
-          bodyFile: ${{ steps.generate_release.outputs.release-body }}
-          artifacts: "${{ steps.generate_release.outputs.artifact-dir }}/*"
-          token: ${{ secrets.GITHUB_TOKEN }}
