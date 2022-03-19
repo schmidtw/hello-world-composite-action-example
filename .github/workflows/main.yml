@@ -19,3 +19,9 @@ jobs:
           artifact-dir: foobar
           verbose: 1
           meson-wrap: true
+      - shell: bash
+        run: |
+          foo="aws openstack"
+          for value in $foo; do
+            echo "I like ${value}."
+          done
